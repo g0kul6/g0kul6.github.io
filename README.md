@@ -1,2 +1,3 @@
 # g0kul6.github.io
-Hi 
+
+The website template is taken from [**S P Sharan**](https://github.com/Syzygianinfern0)
