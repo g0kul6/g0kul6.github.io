@@ -4,7 +4,7 @@
 }
 
 :root {
-    --bg: #edac7a;
+    --bg: #151515;
     --fg: #E8E3E3;
     --pr: #848379;
     --sec: #63625B;
@@ -64,7 +64,7 @@ button:hover {
 
 a:hover {
     color: var(--ter);
-    background-color: rgb(236, 169, 169);
+    background-color: rgb(42, 42, 42);
     transition: 0.3s;
 }
 
