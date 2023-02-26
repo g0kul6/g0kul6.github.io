@@ -1,0 +1,90 @@
+@font-face {
+    font-family: Font;
+    src: url("../fonts/JetBrainsMono-Medium.ttf");
+}
+
+:root {
+    --bg: #151515;
+    --fg: #E8E3E3;
+    --pr: #848379;
+    --sec: #63625B;
+    --ter: #b4827c;
+}
+
+* {
+    transition: ease 1s;
+    color: var(--fg);
+}
+
+a {
+    text-decoration: none;
+}
+
+body {
+    background-color: var(--bg);
+    font-family: Font, monospace;
+    margin: 2em;
+}
+
+button {
+    border-radius: 100%;
+    border: none;
+    padding: 1em;
+    background-color: var(--sec);
+}
+
+button:hover {
+    background-color: var(--pr);
+}
+
+.pfp {
+    max-height: 400px;
+    padding: 1em 3em 3em;
+}
+
+.cursor {
+    font-weight: 700;
+    animation: 1s blink step-end infinite;
+}
+
+@keyframes blink {
+    from,
+    to {
+        color: transparent;
+    }
+
+    50% {
+        color: var(--ter);
+    }
+}
+
+.folder {
+    color: var(--ter);
+}
+
+a:hover {
+    color: var(--ter);
+    background-color: rgb(42, 42, 42);
+    transition: 0.3s;
+}
+
+h1, h2, a {
+    color: var(--pr);
+}
+
+h1 {
+    font-weight: bold;
+    margin-bottom: 0.5em;
+}
+
+@media (max-width: 991px) {
+    .socials {
+        padding-bottom: 1em;
+    }
+}
+
+@media (min-width: 992px) {
+    .hero {
+        margin-top: 5em;
+    }
+}
