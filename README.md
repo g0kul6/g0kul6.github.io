@@ -1,3 +1,4 @@
 # g0kul6.github.io
-Beep ...
-Hi
+theme: jekyll-theme-minimal
+title: Octocat's homepage
+description: Bookmark this to keep an eye on my project updates!
