@@ -9,6 +9,7 @@
     --pr: #848379;
     --sec: #63625B;
     --ter: #b4827c;
+    --new: #684637;
 }
 
 * {
@@ -21,7 +22,7 @@ a {
 }
 
 body {
-    background-color: var(--ter);
+    background-color: var(--bg);
     font-family: Font, monospace;
     margin: 2em;
 }
