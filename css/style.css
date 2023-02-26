@@ -21,7 +21,7 @@ a {
 }
 
 body {
-    background-color: var(--bg);
+    background-color: var(--ter);
     font-family: Font, monospace;
     margin: 2em;
 }
