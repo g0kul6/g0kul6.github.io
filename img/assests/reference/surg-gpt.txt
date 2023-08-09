@@ -1,0 +1,6 @@
+@article{seenivasan2023surgicalgpt,
+  title={SurgicalGPT: End-to-End Language-Vision GPT for Visual Question Answering in Surgery},
+  author={Seenivasan, Lalithkumar and Islam, Mobarakol and Kannan, Gokul and Ren, Hongliang},
+  journal={arXiv preprint arXiv:2304.09974},
+  year={2023}
+}
