@@ -1,2 +1,6 @@
 .DS_Store
 **/.DS_Store
+# Keep raw phone dumps out of the repo (GitHub 100MB limit)
+*.MOV
+*.mov
+img/hobbies/gym/source/

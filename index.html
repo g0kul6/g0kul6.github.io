@@ -109,43 +109,68 @@ section+section{border-top:1px solid var(--border)}
 .section-label{font-family:var(--mono);font-size:.7rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--accent);margin-bottom:8px}
 .section-title{font-family:var(--serif);font-size:clamp(1.6rem,3.5vw,2.1rem);font-weight:400;line-height:1.2;margin-bottom:32px;text-wrap:balance}
 
-.about-grid{display:grid;grid-template-columns:180px 1fr;gap:40px;align-items:start}
-.profile-wrap{position:relative;width:180px;height:180px}
-.profile-pic{width:180px;height:180px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);transition:opacity .4s ease;position:absolute;top:0;left:0}
+/* About + Quote (side-by-side on wide screens) */
+.about-quote-section{padding:48px 0}
+.about-quote-wrap{max-width:980px}
+.about-quote-grid{
+  display:grid;
+  grid-template-columns:minmax(0,1.05fr) minmax(0,.95fr);
+  gap:36px 44px;
+  align-items:center;
+}
+.about-col{min-width:0}
+.about-grid{display:grid;grid-template-columns:140px 1fr;gap:24px;align-items:start}
+.profile-wrap{position:relative;width:140px;height:140px}
+.profile-pic{width:140px;height:140px;border-radius:50%;object-fit:cover;border:3px solid var(--accent);transition:opacity .4s ease;position:absolute;top:0;left:0}
 .profile-pic.alt{opacity:0}
 .profile-wrap:hover .profile-pic.primary{opacity:0}
 .profile-wrap:hover .profile-pic.alt{opacity:1}
 .bio p{margin-bottom:14px;font-size:1.02rem;line-height:1.75;color:var(--text)}
 .bio strong{color:var(--accent);font-weight:600}
 
-/* Quote — typewriter */
-.quote-section{padding:64px 0;text-align:center;border-top:1px solid var(--border)}
-.quote-block{max-width:620px;margin:0 auto;opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+/* Quote — typewriter (lives in about column layout) */
+.quote-col{
+  min-width:0;
+  text-align:center;
+  padding:22px 20px;
+  background:var(--bg-alt);
+  border:1px solid var(--border);
+  border-radius:12px;
+}
+.quote-block{max-width:100%;margin:0 auto;opacity:0;transform:translateY(12px);transition:opacity .7s ease,transform .7s ease}
 .quote-block.revealed{opacity:1;transform:translateY(0)}
-.quote-lang-pill{display:inline-flex;align-items:center;gap:0;margin-bottom:22px;padding:3px;border-radius:999px;border:1px solid var(--border);background:var(--bg-alt)}
-.quote-lang-btn{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;border:none;background:transparent;color:var(--text-sec);padding:6px 14px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s}
+.quote-lang-pill{display:inline-flex;align-items:center;gap:0;margin-bottom:14px;padding:3px;border-radius:999px;border:1px solid var(--border);background:var(--bg)}
+.quote-lang-btn{font-family:var(--mono);font-size:.62rem;letter-spacing:.1em;text-transform:uppercase;border:none;background:transparent;color:var(--text-sec);padding:5px 12px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s}
 .quote-lang-btn.active{background:var(--accent);color:#F5F1EA}
-.quote-stage{min-height:5.8em;display:flex;align-items:center;justify-content:center;padding:0 8px}
-.quote-text{font-size:clamp(1rem,2.4vw,1.22rem);line-height:1.85;color:var(--text);font-style:italic;margin:0;max-width:560px}
-.quote-text.lang-en{font-family:var(--serif);font-size:clamp(.95rem,2vw,1.15rem);line-height:1.75}
+.quote-stage{min-height:4.6em;display:flex;align-items:center;justify-content:center;padding:0 4px}
+.quote-text{font-size:clamp(.92rem,1.8vw,1.08rem);line-height:1.75;color:var(--text);font-style:italic;margin:0;max-width:100%}
+.quote-text.lang-en{font-family:var(--serif);font-size:clamp(.9rem,1.7vw,1.05rem);line-height:1.65}
 .quote-text .caret{display:inline-block;width:.55ch;margin-left:1px;border-right:2px solid var(--accent);animation:caretBlink .8s step-end infinite;vertical-align:-2px}
 .quote-text.done .caret{opacity:0}
 @keyframes caretBlink{50%{border-color:transparent}}
-.quote-divider{width:40px;height:1px;background:var(--accent);margin:22px auto 0;transform:scaleX(0);transition:transform .45s ease}
+.quote-divider{width:36px;height:1px;background:var(--accent);margin:16px auto 0;transform:scaleX(0);transition:transform .45s ease}
 .quote-block.attr-ready .quote-divider{transform:scaleX(1)}
-.quote-attr{margin-top:20px;display:flex;flex-direction:column;align-items:center;gap:6px;min-height:4.2em}
-.quote-attr a{display:flex;flex-direction:column;align-items:center;gap:6px;color:inherit;text-decoration:none}
+.quote-attr{margin-top:14px;display:flex;flex-direction:column;align-items:center;gap:4px;min-height:3.6em}
+.quote-attr a{display:flex;flex-direction:column;align-items:center;gap:4px;color:inherit;text-decoration:none}
 .quote-attr a:hover .quote-kural-num{color:var(--accent-h)}
-.quote-attr-line{min-height:1.2em;opacity:0;transition:opacity .25s ease}
+.quote-attr-line{min-height:1.15em;opacity:0;transition:opacity .25s ease}
 .quote-attr-line.show{opacity:1}
-.quote-attr-tamil{font-size:.95rem;color:var(--text);letter-spacing:.02em}
-.quote-attr-eng{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-sec)}
-.quote-kural-num{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;color:var(--accent);margin-top:2px;opacity:0;transition:opacity .4s ease}
+.quote-attr-tamil{font-size:.88rem;color:var(--text);letter-spacing:.02em}
+.quote-attr-eng{font-family:var(--mono);font-size:.68rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-sec)}
+.quote-kural-num{font-family:var(--mono);font-size:.6rem;letter-spacing:.08em;color:var(--accent);margin-top:2px;opacity:0;transition:opacity .4s ease}
 .quote-block.attr-ready .quote-kural-num{opacity:1}
 .quote-attr .caret{display:inline-block;width:.5ch;border-right:1.5px solid var(--accent);animation:caretBlink .8s step-end infinite;margin-left:1px}
 @media(prefers-reduced-motion:reduce){
   .quote-text .caret,.quote-attr .caret{animation:none!important;border-color:transparent}
   .quote-divider{transform:none!important}
+}
+
+/* Tablet & below: stack About then Quote */
+@media(max-width:900px){
+  .about-quote-grid{grid-template-columns:1fr;gap:28px;align-items:stretch}
+  .about-grid{grid-template-columns:140px 1fr;gap:28px}
+  .quote-col{padding:20px 18px}
+  .quote-stage{min-height:4.2em}
 }
 
 .pub-template{padding:24px;background:var(--bg-alt);border-radius:10px;border:2px dashed var(--border);text-align:center;margin-bottom:32px}
@@ -198,37 +223,37 @@ section+section{border-top:1px solid var(--border)}
 .hobby-name{font-family:var(--serif);font-size:1.15rem;font-weight:400;line-height:1.3}
 .hobby-tagline{font-size:.78rem;color:var(--text-sec);margin-top:2px}
 .hobby-header.open .chevron{transform:rotate(180deg)}
-.hobby-body{max-height:0;overflow:hidden;transition:max-height .5s cubic-bezier(.4,0,.2,1)}
-.hobby-body.open{max-height:800px}
+.hobby-body{max-height:0;overflow:hidden;transition:max-height .55s cubic-bezier(.4,0,.2,1)}
+.hobby-body.open{max-height:6000px}
 .hobby-content{padding:4px 0 28px 60px}
 .hobby-content p{font-size:.9rem;color:var(--text-sec);margin-bottom:16px;line-height:1.7}
 
-.doodle-slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:10px}
-.doodle-slot{aspect-ratio:1;border-radius:8px;border:2px dashed var(--border);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:6px;color:var(--text-sec);background:repeating-linear-gradient(var(--bg-alt) 0px,var(--bg-alt) 19px,var(--border) 19px,var(--border) 20px);transition:border-color .25s}
-.doodle-slot:hover{border-color:var(--accent)}
-.doodle-slot svg{width:24px;height:24px;opacity:.3}
-.doodle-slot span{font-family:var(--mono);font-size:.62rem;letter-spacing:.06em;text-transform:uppercase;opacity:.4}
-.doodle-slot.filled{border-style:solid;padding:0;overflow:hidden;background:var(--bg-alt)}
-.doodle-slot.filled img{width:100%;height:100%;object-fit:cover;display:block}
+.doodle-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(160px,1fr));gap:14px}
+.doodle-card{display:block;border-radius:10px;border:1px solid var(--border);background:var(--bg-alt);overflow:hidden;color:inherit;text-decoration:none;transition:box-shadow .25s,transform .25s,border-color .25s}
+.doodle-card:hover{box-shadow:var(--shadow);transform:translateY(-2px);border-color:var(--accent);color:inherit}
+.doodle-card img{width:100%;aspect-ratio:1;object-fit:cover;display:block;background:var(--bg)}
 
-.video-slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:12px}
-.video-slot{aspect-ratio:16/9;border-radius:10px;border:2px dashed var(--border);background:var(--bg-alt);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;color:var(--text-sec);transition:border-color .25s}
-.video-slot:hover{border-color:var(--accent)}
-.video-slot svg{width:32px;height:32px;opacity:.35}
-.video-slot span{font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;text-transform:uppercase;opacity:.6}
-.video-slot.filled{border-style:solid;padding:0;overflow:hidden;background:#111}
-.video-slot.filled video,.hobby-video{width:100%;height:100%;object-fit:cover;display:block;border-radius:8px}
+.video-slots{display:grid;grid-template-columns:repeat(auto-fill,minmax(180px,1fr));gap:14px}
+.video-card{margin:0;border-radius:10px;border:1px solid var(--border);background:#111;overflow:hidden}
+.video-card video,.hobby-video{width:100%;aspect-ratio:9/16;max-height:420px;object-fit:cover;display:block;background:#000}
+.video-card figcaption{font-family:var(--mono);font-size:.68rem;letter-spacing:.04em;text-transform:uppercase;color:var(--text-sec);padding:10px 12px;background:var(--bg-alt);border-top:1px solid var(--border)}
 
-.insta-card{border:1px solid var(--border);border-radius:12px;overflow:hidden;background:var(--bg-alt);max-width:380px;transition:box-shadow .3s}
-.insta-card:hover{box-shadow:var(--shadow)}
-.insta-card-header{display:flex;align-items:center;gap:12px;padding:14px 16px}
-.insta-card-header svg{width:24px;height:24px;fill:var(--accent);flex-shrink:0}
-.insta-handle{font-family:var(--mono);font-size:.85rem;font-weight:500;color:var(--text)}
-.insta-sub{font-size:.7rem;color:var(--text-sec)}
-.insta-grid-preview{display:grid;grid-template-columns:repeat(3,1fr);gap:2px;padding:0 2px}
-.insta-thumb{aspect-ratio:1;background-size:cover;background-position:center}
-.insta-view-btn{display:block;text-align:center;padding:14px;font-family:var(--mono);font-size:.75rem;letter-spacing:.04em;color:var(--accent);border-top:1px solid var(--border);transition:background .2s}
-.insta-view-btn:hover{background:var(--accent-soft);color:var(--accent-h)}
+.insta-sat{position:relative;border-radius:14px;overflow:hidden;border:1px solid var(--border);background:
+  radial-gradient(120% 90% at 10% 10%,#ff4d6d 0%,transparent 45%),
+  radial-gradient(100% 80% at 90% 20%,#ffd166 0%,transparent 40%),
+  radial-gradient(90% 90% at 80% 90%,#06d6a0 0%,transparent 45%),
+  radial-gradient(80% 70% at 15% 85%,#4cc9f0 0%,transparent 40%),
+  var(--bg-alt);padding:18px;max-width:420px}
+.insta-sat::before{content:'';position:absolute;inset:0;background:linear-gradient(180deg,rgba(28,25,23,.15),rgba(28,25,23,.55));pointer-events:none}
+.insta-sat-inner{position:relative;z-index:1}
+.insta-card-header{display:flex;align-items:center;gap:12px;margin-bottom:14px}
+.insta-card-header svg{width:24px;height:24px;fill:#F5F1EA;flex-shrink:0;filter:drop-shadow(0 1px 2px rgba(0,0,0,.25))}
+.insta-handle{font-family:var(--mono);font-size:.9rem;font-weight:500;color:#F5F1EA}
+.insta-sub{font-size:.72rem;color:rgba(245,241,234,.75)}
+.insta-embed-wrap{background:rgba(245,241,234,.92);border-radius:10px;overflow:hidden;min-height:120px}
+.insta-embed-wrap blockquote{margin:0 auto!important}
+.insta-view-btn{display:inline-block;margin-top:14px;font-family:var(--mono);font-size:.75rem;letter-spacing:.04em;color:#F5F1EA;border:1px solid rgba(245,241,234,.45);padding:8px 14px;border-radius:8px;transition:background .2s,border-color .2s}
+.insta-view-btn:hover{background:rgba(245,241,234,.15);border-color:#F5F1EA;color:#fff}
 
 footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
 .foot-social{display:flex;justify-content:center;gap:16px;margin-bottom:16px}
@@ -238,19 +263,22 @@ footer{padding:40px 0;border-top:1px solid var(--border);text-align:center}
 footer p{font-family:var(--mono);font-size:.7rem;color:var(--text-sec);letter-spacing:.04em}
 
 @media(max-width:680px){
-  .about-grid{grid-template-columns:1fr;justify-items:center;text-align:center}
-  .profile-wrap{width:140px;height:140px}
-  .profile-pic{width:140px;height:140px}
-  .bio p{text-align:left}
+  .about-quote-section{padding:40px 0}
+  .about-quote-grid{gap:22px}
+  .about-grid{grid-template-columns:1fr;justify-items:center;text-align:center;gap:20px}
+  .profile-wrap{width:128px;height:128px}
+  .profile-pic{width:128px;height:128px}
+  .bio p{text-align:left;font-size:.98rem}
+  .quote-col{padding:18px 14px}
+  .quote-stage{min-height:5em}
   .burger{display:block}
   .links{display:none}
   .hobby-content{padding-left:0}
-  .doodle-slots{grid-template-columns:repeat(auto-fill,minmax(100px,1fr))}
-  .video-slots{grid-template-columns:1fr}
+  .doodle-grid{grid-template-columns:repeat(auto-fill,minmax(130px,1fr))}
+  .video-slots{grid-template-columns:1fr 1fr}
   section{padding:48px 0}
   .hobbies-header{padding-top:80px}
-  .insta-card{max-width:100%}
-  .quote-stage{min-height:6.5em}
+  .insta-sat{max-width:100%}
 }
 </style>
 </head>
@@ -299,42 +327,43 @@ footer p{font-family:var(--mono);font-size:.7rem;color:var(--text-sec);letter-sp
   </section>
 
   <main>
-    <section id="about">
-      <div class="wrap">
-        <span class="section-label">About</span>
-        <div class="about-grid">
-          <div class="profile-wrap">
-            <img src="img/profile2.jpeg" alt="Gokul Kannan" class="profile-pic primary">
-            <img src="img/profile1.jpeg" alt="Gokul Kannan" class="profile-pic alt">
+    <section id="about" class="about-quote-section">
+      <div class="wrap about-quote-wrap">
+        <div class="about-quote-grid">
+          <div class="about-col">
+            <span class="section-label">About</span>
+            <div class="about-grid">
+              <div class="profile-wrap">
+                <img src="img/profile2.jpeg" alt="Gokul Kannan" class="profile-pic primary">
+                <img src="img/profile1.jpeg" alt="Gokul Kannan" class="profile-pic alt">
+              </div>
+              <div class="bio">
+                <p>My research focuses on advancing <strong>robot learning</strong> by developing <strong>reward models</strong>, <strong>critics</strong> and <strong>infrastructures</strong> that can enable <strong>scalable post-training</strong>.</p>
+              </div>
+            </div>
           </div>
-          <div class="bio">
-            <p>My research focuses on advancing <strong>robot learning</strong> by developing <strong>reward models</strong>, <strong>critics</strong> and <strong>infrastructures</strong> that can enable <strong>scalable post-training</strong>.</p>
-          </div>
+          <aside class="quote-col" aria-label="Thirukkural">
+            <div class="quote-block" id="quoteBlock">
+              <div class="quote-lang-pill" role="tablist" aria-label="Quote language">
+                <button type="button" class="quote-lang-btn active" data-lang="en" role="tab" aria-selected="true">English</button>
+                <button type="button" class="quote-lang-btn" data-lang="ta" role="tab" aria-selected="false">தமிழ்</button>
+              </div>
+              <div class="quote-stage" aria-live="polite">
+                <p class="quote-text" id="quoteText"><span class="typed" id="quoteTyped"></span><span class="caret" aria-hidden="true"></span></p>
+              </div>
+              <div class="quote-divider"></div>
+              <div class="quote-attr">
+                <a href="https://en.wikipedia.org/wiki/Kural" target="_blank" rel="noopener" aria-label="Thirukkural on Wikipedia">
+                  <span class="quote-attr-line quote-attr-eng" id="attrEn"><span class="typed"></span><span class="caret" aria-hidden="true"></span></span>
+                  <span class="quote-attr-line quote-attr-tamil" id="attrTa"><span class="typed"></span><span class="caret" aria-hidden="true"></span></span>
+                  <span class="quote-kural-num">Thirukkural 619 &middot; On Perseverance</span>
+                </a>
+              </div>
+            </div>
+          </aside>
         </div>
       </div>
     </section>
-
-    <div class="quote-section">
-      <div class="wrap">
-        <div class="quote-block" id="quoteBlock">
-          <div class="quote-lang-pill" role="tablist" aria-label="Quote language">
-            <button type="button" class="quote-lang-btn active" data-lang="ta" role="tab" aria-selected="true">தமிழ்</button>
-            <button type="button" class="quote-lang-btn" data-lang="en" role="tab" aria-selected="false">English</button>
-          </div>
-          <div class="quote-stage" aria-live="polite">
-            <p class="quote-text" id="quoteText"><span class="typed" id="quoteTyped"></span><span class="caret" aria-hidden="true"></span></p>
-          </div>
-          <div class="quote-divider"></div>
-          <div class="quote-attr">
-            <a href="https://en.wikipedia.org/wiki/Kural" target="_blank" rel="noopener" aria-label="Thirukkural on Wikipedia">
-              <span class="quote-attr-line quote-attr-tamil" id="attrTa"><span class="typed"></span><span class="caret" aria-hidden="true"></span></span>
-              <span class="quote-attr-line quote-attr-eng" id="attrEn"><span class="typed"></span><span class="caret" aria-hidden="true"></span></span>
-              <span class="quote-kural-num">Thirukkural 619 &middot; On Perseverance</span>
-            </a>
-          </div>
-        </div>
-      </div>
-    </div>
 
     <section id="research">
       <div class="wrap">
@@ -454,14 +483,17 @@ footer p{font-family:var(--mono);font-size:.7rem;color:var(--text-sec);letter-sp
         </div>
         <div class="hobby-body">
           <div class="hobby-content">
-            <p>A collection of doodles, sketches, and visual notes drawn between research sessions on Procreate.</p>
-            <!-- Drop files in img/hobbies/doodles/ then replace a slot with:
-                 <div class="doodle-slot filled"><img src="img/hobbies/doodles/01.jpg" alt="Doodle"></div> -->
-            <div class="doodle-slots">
-              <div class="doodle-slot" data-src="img/hobbies/doodles/01.jpg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg><span>01.jpg</span></div>
-              <div class="doodle-slot" data-src="img/hobbies/doodles/02.jpg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg><span>02.jpg</span></div>
-              <div class="doodle-slot" data-src="img/hobbies/doodles/03.jpg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg><span>03.jpg</span></div>
-              <div class="doodle-slot" data-src="img/hobbies/doodles/04.jpg"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M12 5v14M5 12h14"/></svg><span>04.jpg</span></div>
+            <p>Doodles from Procreate &mdash; tap a piece to open the full PDF.</p>
+            <div class="doodle-grid">
+              <a class="doodle-card" href="img/hobbies/doodles/Biker_Gang.pdf" target="_blank" rel="noopener">
+                <img src="img/hobbies/doodles/biker-gang.jpg" alt="Doodle" loading="lazy">
+              </a>
+              <a class="doodle-card" href="img/hobbies/doodles/Buffdude.pdf" target="_blank" rel="noopener">
+                <img src="img/hobbies/doodles/buffdude.jpg" alt="Doodle" loading="lazy">
+              </a>
+              <a class="doodle-card" href="img/hobbies/doodles/Karuppu_.pdf" target="_blank" rel="noopener">
+                <img src="img/hobbies/doodles/karuppu.jpg" alt="Doodle" loading="lazy">
+              </a>
             </div>
           </div>
         </div>
@@ -480,18 +512,16 @@ footer p{font-family:var(--mono);font-size:.7rem;color:var(--text-sec);letter-sp
         </div>
         <div class="hobby-body">
           <div class="hobby-content">
-            <p>Weighted dips, pull-ups, and more &mdash; PR videos coming soon.</p>
-            <!-- Drop videos in img/hobbies/gym/ then replace a slot with:
-                 <video class="hobby-video" src="img/hobbies/gym/weighted-dips.mp4" controls playsinline></video> -->
+            <p>Recent PR clips &mdash; muted, just the work.</p>
             <div class="video-slots">
-              <div class="video-slot" data-src="img/hobbies/gym/weighted-dips.mp4">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                <span>weighted-dips.mp4</span>
-              </div>
-              <div class="video-slot" data-src="img/hobbies/gym/pull-ups.mp4">
-                <svg viewBox="0 0 24 24" fill="currentColor"><path d="M8 5v14l11-7z"/></svg>
-                <span>pull-ups.mp4</span>
-              </div>
+              <figure class="video-card">
+                <video class="hobby-video" src="img/hobbies/gym/pr-01.mp4" controls playsinline muted preload="metadata"></video>
+                <figcaption>PR Clip 01</figcaption>
+              </figure>
+              <figure class="video-card">
+                <video class="hobby-video" src="img/hobbies/gym/pr-02.mp4" controls playsinline muted preload="metadata"></video>
+                <figcaption>PR Clip 02</figcaption>
+              </figure>
             </div>
           </div>
         </div>
@@ -504,31 +534,32 @@ footer p{font-family:var(--mono);font-size:.7rem;color:var(--text-sec);letter-sp
           </div>
           <div class="hobby-title-area">
             <div class="hobby-name">High Saturation Photography :)</div>
-            <div class="hobby-tagline">Vibrant, punchy, unapologetically saturated</div>
+            <div class="hobby-tagline">Unapologetically saturated</div>
           </div>
           <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><polyline points="6 9 12 15 18 9"/></svg>
         </div>
         <div class="hobby-body">
           <div class="hobby-content">
-            <p>Colours cranked to the max. Check out the full gallery on Instagram.</p>
-            <div class="insta-card">
-              <div class="insta-card-header">
-                <svg viewBox="0 0 24 24"><use href="#ico-ig" fill="currentColor"/></svg>
-                <div>
-                  <div class="insta-handle">@hozholens</div>
-                  <div class="insta-sub">Public &middot; Photography</div>
+            <p>Colours cranked to the max &mdash; live preview from Instagram.</p>
+            <div class="insta-sat">
+              <div class="insta-sat-inner">
+                <div class="insta-card-header">
+                  <svg viewBox="0 0 24 24"><use href="#ico-ig" fill="currentColor"/></svg>
+                  <div>
+                    <div class="insta-handle">@hozholens</div>
+                    <div class="insta-sub">Public &middot; Photography</div>
+                  </div>
                 </div>
+                <div class="insta-embed-wrap">
+                  <blockquote class="instagram-media"
+                    data-instgrm-permalink="https://www.instagram.com/hozholens/"
+                    data-instgrm-version="14"
+                    style="background:#FFF;border:0;margin:0;max-width:100%;min-width:0;padding:0;width:100%">
+                    <a href="https://www.instagram.com/hozholens/" target="_blank" rel="noopener">@hozholens on Instagram</a>
+                  </blockquote>
+                </div>
+                <a href="https://www.instagram.com/hozholens/" target="_blank" rel="noopener" class="insta-view-btn">Open Instagram &rarr;</a>
               </div>
-              <!-- Drop thumbs in img/hobbies/photos/ as 01.jpg … 06.jpg; gradients are placeholders -->
-              <div class="insta-grid-preview">
-                <div class="insta-thumb" data-src="img/hobbies/photos/01.jpg" style="background:linear-gradient(135deg,#FF6B6B,#FFE66D)"></div>
-                <div class="insta-thumb" data-src="img/hobbies/photos/02.jpg" style="background:linear-gradient(135deg,#4ECDC4,#556270)"></div>
-                <div class="insta-thumb" data-src="img/hobbies/photos/03.jpg" style="background:linear-gradient(135deg,#F093FB,#F5576C)"></div>
-                <div class="insta-thumb" data-src="img/hobbies/photos/04.jpg" style="background:linear-gradient(135deg,#4facfe,#00f2fe)"></div>
-                <div class="insta-thumb" data-src="img/hobbies/photos/05.jpg" style="background:linear-gradient(135deg,#43e97b,#38f9d7)"></div>
-                <div class="insta-thumb" data-src="img/hobbies/photos/06.jpg" style="background:linear-gradient(135deg,#fa709a,#fee140)"></div>
-              </div>
-              <a href="https://www.instagram.com/hozholens/" target="_blank" rel="noopener" class="insta-view-btn">View Profile on Instagram &rarr;</a>
             </div>
           </div>
         </div>
@@ -595,7 +626,13 @@ function goTo(id){
 function closeMobileAndGo(id){document.querySelector('.mobile-menu').classList.remove('open');goTo(id)}
 function closeMobileAndShowHobbies(){document.querySelector('.mobile-menu').classList.remove('open');showHobbies()}
 
-function toggleHobby(h){h.classList.toggle('open');h.nextElementSibling.classList.toggle('open')}
+function toggleHobby(h){
+  h.classList.toggle('open');
+  h.nextElementSibling.classList.toggle('open');
+  if(h.classList.contains('open')&&window.instgrm&&instgrm.Embeds){
+    try{instgrm.Embeds.process()}catch(e){}
+  }
+}
 function toggleDropdown(h){h.classList.toggle('open');document.getElementById('undergrad-body').classList.toggle('open')}
 
 (function(){
@@ -610,47 +647,6 @@ function toggleDropdown(h){h.classList.toggle('open');document.getElementById('u
     },2000);
   }
   setTimeout(loop,2500);
-})();
-
-/* Auto-fill hobby slots when assets exist at data-src paths */
-(function(){
-  document.querySelectorAll('.doodle-slot[data-src]').forEach(function(slot){
-    var src=slot.getAttribute('data-src');
-    var img=new Image();
-    img.onload=function(){
-      slot.classList.add('filled');
-      slot.innerHTML='';
-      var el=document.createElement('img');
-      el.src=src;el.alt='Doodle';
-      slot.appendChild(el);
-    };
-    img.src=src;
-  });
-  document.querySelectorAll('.video-slot[data-src]').forEach(function(slot){
-    var src=slot.getAttribute('data-src');
-    var v=document.createElement('video');
-    v.preload='metadata';
-    v.onloadeddata=function(){
-      slot.classList.add('filled');
-      slot.innerHTML='';
-      v.controls=true;v.playsInline=true;v.className='hobby-video';
-      slot.appendChild(v);
-    };
-    v.onerror=function(){};
-    v.src=src;
-  });
-  document.querySelectorAll('.insta-thumb[data-src]').forEach(function(thumb){
-    var src=thumb.getAttribute('data-src');
-    var img=new Image();
-    img.onload=function(){
-      thumb.style.backgroundImage='url("'+src+'")';
-      thumb.style.background='';
-      thumb.style.backgroundImage='url("'+src+'")';
-      thumb.style.backgroundSize='cover';
-      thumb.style.backgroundPosition='center';
-    };
-    img.src=src;
-  });
 })();
 
 /* Quote typewriter: Tamil ↔ English + separate Thiruvalluvar lines */
@@ -669,7 +665,7 @@ function toggleDropdown(h){h.classList.toggle('open');document.getElementById('u
   };
   var ATTR_TA='திருவள்ளுவர்';
   var ATTR_EN='Thiruvalluvar';
-  var lang='ta';
+  var lang='en';
   var token=0;
   var started=false;
 
@@ -741,7 +737,7 @@ function toggleDropdown(h){h.classList.toggle('open');document.getElementById('u
   }
   async function runCycle(startLang){
     var myToken=++token;
-    lang=startLang||'ta';
+    lang=startLang||'en';
     while(myToken===token){
       setPill(lang);
       quoteEl.classList.toggle('lang-en',lang==='en');
@@ -750,16 +746,17 @@ function toggleDropdown(h){h.classList.toggle('open');document.getElementById('u
       if(!ok)return;
       await sleep(350);
       if(myToken!==token)return;
-      ok=await typeInto(attrTa,ATTR_TA,70,myToken);
+      // Attribution: English name first, then Tamil (matches quote language order)
+      ok=await typeInto(attrEn,ATTR_EN,45,myToken);
       if(!ok)return;
       await sleep(280);
       if(myToken!==token)return;
-      ok=await typeInto(attrEn,ATTR_EN,45,myToken);
+      ok=await typeInto(attrTa,ATTR_TA,70,myToken);
       if(!ok)return;
       block.classList.add('attr-ready');
       await sleep(3200);
       if(myToken!==token)return;
-      lang=lang==='ta'?'en':'ta';
+      lang=lang==='en'?'ta':'en';
     }
   }
   function showStatic(l){
@@ -788,13 +785,14 @@ function toggleDropdown(h){h.classList.toggle('open');document.getElementById('u
       if(!e.isIntersecting||started)return;
       started=true;
       block.classList.add('revealed');
-      if(reduced)showStatic('ta');
-      else runCycle('ta');
+      if(reduced)showStatic('en');
+      else runCycle('en');
       obs.unobserve(block);
     });
   },{threshold:0.3});
   obs.observe(block);
 })();
 </script>
+<script async src="https://www.instagram.com/embed.js"></script>
 </body>
 </html>
