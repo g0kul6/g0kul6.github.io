@@ -91,8 +91,8 @@ nav.scrolled .burger line,nav.force-solid .burger line{stroke:var(--text)}
 
 .hero-name{font-family:var(--serif);font-weight:400;font-size:clamp(2.8rem,6vw,4.2rem);color:#F5F1EA;line-height:1.05;letter-spacing:-.01em;margin-bottom:16px;animation:fadeUp .6s ease .15s both}
 .goku-peek{display:inline-flex;align-items:center;overflow:hidden;width:0;opacity:0;transition:width .45s cubic-bezier(.4,0,.2,1),opacity .3s ease;vertical-align:baseline}
-.goku-peek.show{width:0.95em;opacity:1}
-.goku-peek svg{width:0.85em;height:0.85em;flex-shrink:0;display:block;filter:drop-shadow(0 1px 3px rgba(0,0,0,.25))}
+.goku-peek.show{width:1.05em;opacity:1}
+.goku-peek img{width:0.95em;height:0.95em;flex-shrink:0;display:block;object-fit:contain;filter:drop-shadow(0 1px 3px rgba(0,0,0,.25))}
 .hero-tagline{font-family:var(--sans);font-weight:300;font-size:1rem;color:rgba(245,241,234,.7);max-width:520px;line-height:1.6;margin-bottom:28px;animation:fadeUp .6s ease .35s both}
 .social-row{display:flex;gap:16px;align-items:center;animation:fadeUp .5s ease .5s both}
 .social-row a{display:flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;background:rgba(245,241,234,.1);color:#F5F1EA;transition:background .25s,transform .25s}
@@ -118,33 +118,34 @@ section+section{border-top:1px solid var(--border)}
 .bio p{margin-bottom:14px;font-size:1.02rem;line-height:1.75;color:var(--text)}
 .bio strong{color:var(--accent);font-weight:600}
 
-/* Quote — translation morph */
+/* Quote — typewriter */
 .quote-section{padding:64px 0;text-align:center;border-top:1px solid var(--border)}
-.quote-block{max-width:600px;margin:0 auto;opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
+.quote-block{max-width:620px;margin:0 auto;opacity:0;transform:translateY(16px);transition:opacity .7s ease,transform .7s ease}
 .quote-block.revealed{opacity:1;transform:translateY(0)}
 .quote-lang-pill{display:inline-flex;align-items:center;gap:0;margin-bottom:22px;padding:3px;border-radius:999px;border:1px solid var(--border);background:var(--bg-alt)}
 .quote-lang-btn{font-family:var(--mono);font-size:.65rem;letter-spacing:.1em;text-transform:uppercase;border:none;background:transparent;color:var(--text-sec);padding:6px 14px;border-radius:999px;cursor:pointer;transition:background .25s,color .25s}
 .quote-lang-btn.active{background:var(--accent);color:#F5F1EA}
-.quote-stage{position:relative;min-height:7.5em;display:flex;align-items:center;justify-content:center}
-.quote-panel{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;padding:0 8px;
-  opacity:0;transform:translateY(10px) scale(.985);filter:blur(2px);
-  transition:opacity .7s cubic-bezier(.4,0,.2,1),transform .7s cubic-bezier(.4,0,.2,1),filter .7s ease;
-  pointer-events:none}
-.quote-panel.active{opacity:1;transform:translateY(0) scale(1);filter:blur(0);pointer-events:auto}
-.quote-tamil{font-size:clamp(1rem,2.5vw,1.25rem);line-height:1.9;color:var(--text);font-style:italic}
-.quote-english{font-family:var(--serif);font-size:clamp(.95rem,2vw,1.15rem);line-height:1.7;color:var(--text);font-style:italic}
-.quote-divider{width:40px;height:1px;background:var(--accent);margin:24px auto 0}
-.quote-attr{margin-top:20px;display:flex;flex-direction:column;align-items:center;gap:2px}
-.quote-attr-tamil{font-size:.8rem;color:var(--text-sec)}
-.quote-attr-eng{font-family:var(--mono);font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--text-sec)}
-.quote-kural-num{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;color:var(--accent);margin-top:4px}
-.quote-progress{width:80px;height:2px;background:var(--border);margin:18px auto 0;border-radius:2px;overflow:hidden}
-.quote-progress-bar{height:100%;width:0;background:var(--accent);transition:none}
-.quote-block.cycling .quote-progress-bar{animation:quoteProgress 5s linear infinite}
-@keyframes quoteProgress{from{width:0}to{width:100%}}
+.quote-stage{min-height:5.8em;display:flex;align-items:center;justify-content:center;padding:0 8px}
+.quote-text{font-size:clamp(1rem,2.4vw,1.22rem);line-height:1.85;color:var(--text);font-style:italic;margin:0;max-width:560px}
+.quote-text.lang-en{font-family:var(--serif);font-size:clamp(.95rem,2vw,1.15rem);line-height:1.75}
+.quote-text .caret{display:inline-block;width:.55ch;margin-left:1px;border-right:2px solid var(--accent);animation:caretBlink .8s step-end infinite;vertical-align:-2px}
+.quote-text.done .caret{opacity:0}
+@keyframes caretBlink{50%{border-color:transparent}}
+.quote-divider{width:40px;height:1px;background:var(--accent);margin:22px auto 0;transform:scaleX(0);transition:transform .45s ease}
+.quote-block.attr-ready .quote-divider{transform:scaleX(1)}
+.quote-attr{margin-top:20px;display:flex;flex-direction:column;align-items:center;gap:6px;min-height:4.2em}
+.quote-attr a{display:flex;flex-direction:column;align-items:center;gap:6px;color:inherit;text-decoration:none}
+.quote-attr a:hover .quote-kural-num{color:var(--accent-h)}
+.quote-attr-line{min-height:1.2em;opacity:0;transition:opacity .25s ease}
+.quote-attr-line.show{opacity:1}
+.quote-attr-tamil{font-size:.95rem;color:var(--text);letter-spacing:.02em}
+.quote-attr-eng{font-family:var(--mono);font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--text-sec)}
+.quote-kural-num{font-family:var(--mono);font-size:.62rem;letter-spacing:.08em;color:var(--accent);margin-top:2px;opacity:0;transition:opacity .4s ease}
+.quote-block.attr-ready .quote-kural-num{opacity:1}
+.quote-attr .caret{display:inline-block;width:.5ch;border-right:1.5px solid var(--accent);animation:caretBlink .8s step-end infinite;margin-left:1px}
 @media(prefers-reduced-motion:reduce){
-  .quote-panel{transition:none!important;filter:none!important}
-  .quote-block.cycling .quote-progress-bar{animation:none!important;width:100%}
+  .quote-text .caret,.quote-attr .caret{animation:none!important;border-color:transparent}
+  .quote-divider{transform:none!important}
 }
 
 .pub-template{padding:24px;background:var(--bg-alt);border-radius:10px;border:2px dashed var(--border);text-align:center;margin-bottom:32px}
@@ -249,7 +250,7 @@ footer p{font-family:var(--mono);font-size:.7rem;color:var(--text-sec);letter-sp
   section{padding:48px 0}
   .hobbies-header{padding-top:80px}
   .insta-card{max-width:100%}
-  .quote-stage{min-height:8.5em}
+  .quote-stage{min-height:6.5em}
 }
 </style>
 </head>
@@ -287,12 +288,12 @@ footer p{font-family:var(--mono);font-size:.7rem;color:var(--text-sec);letter-sp
   <section class="hero" id="top">
     <div class="hero-bg"></div>
     <div class="hero-content wrap">
-      <h1 class="hero-name">Goku<span class="goku-peek" id="gokuPeek"><svg viewBox="0 0 36 44"><path d="M6,24 L3,10 L10,19 L5,3 L14,16 L12,0 L20,14 L22,-1 L26,14 L32,4 L28,18 L34,10 L30,24" fill="#222"/><circle cx="18" cy="28" r="12" fill="#FAC06B"/><ellipse cx="14" cy="27" rx="2" ry="2.5" fill="#222"/><ellipse cx="22" cy="27" rx="2" ry="2.5" fill="#222"/><circle cx="14.8" cy="26" r=".8" fill="#fff"/><circle cx="22.8" cy="26" r=".8" fill="#fff"/><path d="M14,32 Q18,37 22,32" stroke="#222" fill="none" stroke-width="1.5" stroke-linecap="round"/></svg></span>l Kannan</h1>
+      <h1 class="hero-name">Goku<span class="goku-peek" id="gokuPeek"><img src="img/goku-icon.png" alt="" width="36" height="36"></span>l Kannan</h1>
       <p class="hero-tagline">PhD student in robot learning at Johns Hopkins University — building reward models, critics, and infrastructure for scalable post-training.</p>
       <div class="social-row">
         <a href="https://github.com/g0kul6" target="_blank" rel="noopener" aria-label="GitHub"><svg width="18" height="18" fill="currentColor"><use href="#ico-gh"/></svg></a>
         <a href="https://scholar.google.com/citations?user=v5CMqA4AAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar"><svg width="18" height="18" fill="currentColor"><use href="#ico-gs"/></svg></a>
-        <a href="#" target="_blank" rel="noopener" aria-label="X"><svg width="18" height="18" fill="currentColor"><use href="#ico-x"/></svg></a>
+        <a href="https://x.com/g0kul_6" target="_blank" rel="noopener" aria-label="X"><svg width="18" height="18" fill="currentColor"><use href="#ico-x"/></svg></a>
       </div>
     </div>
   </section>
@@ -315,25 +316,21 @@ footer p{font-family:var(--mono);font-size:.7rem;color:var(--text-sec);letter-sp
 
     <div class="quote-section">
       <div class="wrap">
-        <div class="quote-block cycling" id="quoteBlock">
+        <div class="quote-block" id="quoteBlock">
           <div class="quote-lang-pill" role="tablist" aria-label="Quote language">
             <button type="button" class="quote-lang-btn active" data-lang="ta" role="tab" aria-selected="true">தமிழ்</button>
             <button type="button" class="quote-lang-btn" data-lang="en" role="tab" aria-selected="false">English</button>
           </div>
           <div class="quote-stage" aria-live="polite">
-            <div class="quote-panel active" data-lang="ta">
-              <p class="quote-tamil">"தெய்வத்தான் ஆகா தெனினும் முயற்சிதன்<br>மெய்வருத்தக் கூலி தரும்."</p>
-            </div>
-            <div class="quote-panel" data-lang="en">
-              <p class="quote-english">"Even though God be against, effort is bound to pay the wages of labour."</p>
-            </div>
+            <p class="quote-text" id="quoteText"><span class="typed" id="quoteTyped"></span><span class="caret" aria-hidden="true"></span></p>
           </div>
-          <div class="quote-progress" aria-hidden="true"><div class="quote-progress-bar" id="quoteProgress"></div></div>
           <div class="quote-divider"></div>
           <div class="quote-attr">
-            <span class="quote-attr-tamil">திருவள்ளுவர்</span>
-            <span class="quote-attr-eng">Thiruvalluvar</span>
-            <span class="quote-kural-num">Thirukkural 619 &middot; On Perseverance</span>
+            <a href="https://en.wikipedia.org/wiki/Kural" target="_blank" rel="noopener" aria-label="Thirukkural on Wikipedia">
+              <span class="quote-attr-line quote-attr-tamil" id="attrTa"><span class="typed"></span><span class="caret" aria-hidden="true"></span></span>
+              <span class="quote-attr-line quote-attr-eng" id="attrEn"><span class="typed"></span><span class="caret" aria-hidden="true"></span></span>
+              <span class="quote-kural-num">Thirukkural 619 &middot; On Perseverance</span>
+            </a>
           </div>
         </div>
       </div>
@@ -345,9 +342,7 @@ footer p{font-family:var(--mono);font-size:.7rem;color:var(--text-sec);letter-sp
         <h2 class="section-title">Publications</h2>
 
         <div class="pub-template">
-          <div class="pub-template-label">Forthcoming</div>
-          <div class="pub-template-title">Similarity Weighted Few-Shot Imitation Learning</div>
-          <div class="pub-template-authors"><span class="me">Gokul Kannan Thiruvenkadam</span>, Bardia Safaei, Vishal M. Patel</div>
+          <div class="pub-template-title">Coming soon</div>
         </div>
 
         <div class="dropdown-header" onclick="toggleDropdown(this)" style="border-top:1px solid var(--border);margin-top:8px">
@@ -424,7 +419,7 @@ footer p{font-family:var(--mono);font-size:.7rem;color:var(--text-sec);letter-sp
       <div class="foot-social">
         <a href="https://github.com/g0kul6" target="_blank" rel="noopener" aria-label="GitHub"><svg width="18" height="18" fill="currentColor"><use href="#ico-gh"/></svg></a>
         <a href="https://scholar.google.com/citations?user=v5CMqA4AAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar"><svg width="18" height="18" fill="currentColor"><use href="#ico-gs"/></svg></a>
-        <a href="#" target="_blank" rel="noopener" aria-label="X"><svg width="18" height="18" fill="currentColor"><use href="#ico-x"/></svg></a>
+        <a href="https://x.com/g0kul_6" target="_blank" rel="noopener" aria-label="X"><svg width="18" height="18" fill="currentColor"><use href="#ico-x"/></svg></a>
       </div>
       <p>&copy; 2026 Gokul Kannan Thiruvenkadam</p>
     </div>
@@ -547,7 +542,7 @@ footer p{font-family:var(--mono);font-size:.7rem;color:var(--text-sec);letter-sp
       <div class="foot-social">
         <a href="https://github.com/g0kul6" target="_blank" rel="noopener" aria-label="GitHub"><svg width="18" height="18" fill="currentColor"><use href="#ico-gh"/></svg></a>
         <a href="https://scholar.google.com/citations?user=v5CMqA4AAAAJ&hl=en" target="_blank" rel="noopener" aria-label="Google Scholar"><svg width="18" height="18" fill="currentColor"><use href="#ico-gs"/></svg></a>
-        <a href="#" target="_blank" rel="noopener" aria-label="X"><svg width="18" height="18" fill="currentColor"><use href="#ico-x"/></svg></a>
+        <a href="https://x.com/g0kul_6" target="_blank" rel="noopener" aria-label="X"><svg width="18" height="18" fill="currentColor"><use href="#ico-x"/></svg></a>
       </div>
       <p>&copy; 2026 Gokul Kannan Thiruvenkadam</p>
     </div>
@@ -658,56 +653,143 @@ function toggleDropdown(h){h.classList.toggle('open');document.getElementById('u
   });
 })();
 
-/* Quote translation morph: Tamil ↔ English */
+/* Quote typewriter: Tamil ↔ English + separate Thiruvalluvar lines */
 (function(){
   var block=document.getElementById('quoteBlock');
   if(!block)return;
-  var panels=block.querySelectorAll('.quote-panel');
+  var quoteEl=document.getElementById('quoteText');
+  var typedEl=document.getElementById('quoteTyped');
+  var attrTa=document.getElementById('attrTa');
+  var attrEn=document.getElementById('attrEn');
   var btns=block.querySelectorAll('.quote-lang-btn');
-  var progress=document.getElementById('quoteProgress');
-  var langs=['ta','en'];
-  var idx=0;
-  var timer=null;
-  var INTERVAL=5000;
   var reduced=window.matchMedia('(prefers-reduced-motion:reduce)').matches;
-  var cycling=false;
+  var quotes={
+    ta:'"தெய்வத்தான் ஆகா தெனினும் முயற்சிதன் மெய்வருத்தக் கூலி தரும்."',
+    en:'"Though fate-divine should make your labour vain;\nEffort its labour\'s sure reward will gain."'
+  };
+  var ATTR_TA='திருவள்ளுவர்';
+  var ATTR_EN='Thiruvalluvar';
+  var lang='ta';
+  var token=0;
+  var started=false;
 
-  function showLang(lang,restart){
-    idx=langs.indexOf(lang);
-    if(idx<0)idx=0;
-    panels.forEach(function(p){p.classList.toggle('active',p.getAttribute('data-lang')===langs[idx])});
+  function sleep(ms){return new Promise(function(r){setTimeout(r,ms)})}
+  function setPill(l){
     btns.forEach(function(b){
-      var on=b.getAttribute('data-lang')===langs[idx];
+      var on=b.getAttribute('data-lang')===l;
       b.classList.toggle('active',on);
       b.setAttribute('aria-selected',on?'true':'false');
     });
-    if(restart&&cycling&&!reduced){
-      clearInterval(timer);
-      if(progress){
-        progress.style.animation='none';
-        void progress.offsetWidth;
-        progress.style.animation='';
-      }
-      timer=setInterval(next,INTERVAL);
+  }
+  function clearAttr(){
+    block.classList.remove('attr-ready');
+    [attrTa,attrEn].forEach(function(line){
+      line.classList.remove('show');
+      line.querySelector('.typed').textContent='';
+      var c=line.querySelector('.caret');
+      if(c)c.style.display='none';
+    });
+  }
+  function typeInto(el,text,speed,myToken){
+    return new Promise(function(resolve){
+      var i=0;
+      var typed=el.querySelector?el.querySelector('.typed'):null;
+      var caret=el.querySelector?el.querySelector('.caret'):null;
+      var target=typed||el;
+      if(el.classList)el.classList.add('show');
+      if(caret)caret.style.display='inline-block';
+      target.textContent='';
+      (function step(){
+        if(myToken!==token){resolve(false);return}
+        if(i>=text.length){
+          if(caret)caret.style.display='none';
+          resolve(true);return;
+        }
+        var ch=text.charAt(i);
+        if(ch==='\n')target.innerHTML+=('<br>');
+        else target.textContent+=ch;
+        i++;
+        setTimeout(step,speed);
+      })();
+    });
+  }
+  function renderTyped(el,buf){
+    el.textContent='';
+    var parts=buf.split('\n');
+    parts.forEach(function(part,idx){
+      el.appendChild(document.createTextNode(part));
+      if(idx<parts.length-1)el.appendChild(document.createElement('br'));
+    });
+  }
+  function typeQuote(text,myToken){
+    return new Promise(function(resolve){
+      var i=0,buf='';
+      quoteEl.classList.remove('done');
+      typedEl.textContent='';
+      (function step(){
+        if(myToken!==token){resolve(false);return}
+        if(i>=text.length){
+          quoteEl.classList.add('done');
+          resolve(true);return;
+        }
+        buf+=text.charAt(i);
+        renderTyped(typedEl,buf);
+        i++;
+        setTimeout(step, lang==='ta' ? 55 : 28);
+      })();
+    });
+  }
+  async function runCycle(startLang){
+    var myToken=++token;
+    lang=startLang||'ta';
+    while(myToken===token){
+      setPill(lang);
+      quoteEl.classList.toggle('lang-en',lang==='en');
+      clearAttr();
+      var ok=await typeQuote(quotes[lang],myToken);
+      if(!ok)return;
+      await sleep(350);
+      if(myToken!==token)return;
+      ok=await typeInto(attrTa,ATTR_TA,70,myToken);
+      if(!ok)return;
+      await sleep(280);
+      if(myToken!==token)return;
+      ok=await typeInto(attrEn,ATTR_EN,45,myToken);
+      if(!ok)return;
+      block.classList.add('attr-ready');
+      await sleep(3200);
+      if(myToken!==token)return;
+      lang=lang==='ta'?'en':'ta';
     }
   }
-  function next(){showLang(langs[(idx+1)%langs.length],false)}
+  function showStatic(l){
+    lang=l;
+    setPill(l);
+    quoteEl.classList.toggle('lang-en',l==='en');
+    quoteEl.classList.add('done');
+    renderTyped(typedEl,quotes[l]);
+    attrTa.classList.add('show');
+    attrTa.querySelector('.typed').textContent=ATTR_TA;
+    attrEn.classList.add('show');
+    attrEn.querySelector('.typed').textContent=ATTR_EN;
+    block.classList.add('attr-ready');
+  }
 
   btns.forEach(function(b){
     b.addEventListener('click',function(){
-      showLang(b.getAttribute('data-lang'),true);
+      var l=b.getAttribute('data-lang');
+      if(reduced){showStatic(l);return}
+      runCycle(l);
     });
   });
 
   var obs=new IntersectionObserver(function(entries){
     entries.forEach(function(e){
-      if(!e.isIntersecting)return;
+      if(!e.isIntersecting||started)return;
+      started=true;
       block.classList.add('revealed');
-      if(!reduced){
-        cycling=true;
-        block.classList.add('cycling');
-        timer=setInterval(next,INTERVAL);
-      }
+      if(reduced)showStatic('ta');
+      else runCycle('ta');
       obs.unobserve(block);
     });
   },{threshold:0.3});
